@@ -1,4 +1,4 @@
-"""Модуль pages.py содержит классы и функции, используемые для работы страниц приложения Flask."""
+"""Основные классы и функции."""
 from flask import render_template, request, session
 from flask_wtf import FlaskForm
 from wtforms import SelectField, BooleanField, RadioField
@@ -7,7 +7,7 @@ from .tools import generate_text, calculate_result, calculate_cwpm
 
 
 title = _('Print Speed Test')
-instruction = _('Type the following text as quickly and accurately as you can:')
+instruction = _('Type the text as quickly and accurately as you can:')
 label_input = _('Your input:')
 submit_button = _('Submit')
 
@@ -44,9 +44,9 @@ def post_result(page_name):
     user_text = request.form['user_text']
     test_text = session.get('test_text', '')
     if page_name == "result.html":
-    	result = calculate_result(test_text, user_text)
+        result = calculate_result(test_text, user_text)
     else:
-    	result = calculate_cwpm(test_text, user_text, session.get('sec', 60))
+        result = calculate_cwpm(test_text, user_text, session.get('sec', 60))
     return render_template(page_name,
                            result=round(result, 2),
                            user_words=user_text.split(),

@@ -1,4 +1,4 @@
-"""Модуль tools.py, содержащий вспомогательные функции для генерации текста и расчета результатов."""
+"""Вспомогательные функции для генерации текста и расчета результатов."""
 
 import re
 import requests
@@ -47,7 +47,7 @@ def calculate_result(test_text, user_text):
 
 
 def calculate_cwpm(test_text, user_text, sec):
-    """Рассчитывает скорость ввода пользователя в словах за минуту (correct words per minute)."""
+    """Рассчитывает скорость ввода пользователя в словах за минуту."""
     test_words = test_text.split()
     user_words = user_text.split()
     correct_words = [t for t, u in zip(test_words, user_words) if t == u]
